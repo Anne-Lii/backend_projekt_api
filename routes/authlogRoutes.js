@@ -3,6 +3,7 @@
 const express = require("express");//include express
 const router = express.Router();
 const mongoose = require("mongoose");
+const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 //Connect to MongoDB
@@ -20,7 +21,16 @@ router.post("/login", async (req, res) => {
 
         //validate user and password
         if(username ===`admin` && password ===`admin`) {
-            res.status(200).json({message: `Lyckad inloggning`, token: `här ska token placeras`});
+
+            //create JWT
+            const payload = {username: username};
+            const token = jwt.sign(payload, process.env.JWT_SECRET_KEY, {expiresIn:"1h"});
+            const response =  {
+                message: "Du har blivit inloggad",
+                token:token
+            }
+            
+            res.status(200).json({response});
         } else {
             res.status(401).json({message: `Fel användare eller lösenord`});
         }
