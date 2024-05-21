@@ -1,10 +1,11 @@
 /*Anne-Lii Hansen*/
-//include
+
 const express = require("express"); //include express
 const bodyParser = require("body-parser");
 const cors = require("cors");//include cors
 const authlogRoutes = require("./routes/authlogRoutes");//include route for auth and login
 const jwt = require("jsonwebtoken");
+const foodRoutes = require("./routes/foodRoutes");
 require("dotenv").config();
 
 const port = process.env.PORT || 3000;
@@ -15,8 +16,9 @@ app.use(cors({origin: "*"}));
 
 //Routes
 app.use("/api", authlogRoutes); 
+app.use("/api/foods", foodRoutes);
 
-// protected route for userinfo
+// protected route for admin
 app.get("/api/admin", authenticateToken, (req, res) => {
     res.json({message: "Du är inloggad som Administratör"});
 });
