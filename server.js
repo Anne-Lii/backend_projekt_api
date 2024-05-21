@@ -8,6 +8,7 @@ require("dotenv").config();
 
 const port = process.env.PORT || 3000;
 const app = express();
+
 app.use(bodyParser.json());
 app.use(cors({origin: "*"}));
 
@@ -16,5 +17,5 @@ app.use("/api", authlogRoutes);
 
 //start application
 app.listen(port, ()=> {
-console.log(`Server running at ${port}`);
+console.log(`Server startad på port: ${port}`);
 });

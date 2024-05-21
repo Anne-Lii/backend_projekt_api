@@ -2,7 +2,16 @@
 
 const express = require("express");//include express
 const router = express.Router();
+const mongoose = require("mongoose");
+require("dotenv").config();
 
+//Connect to MongoDB
+mongoose.set("strictQuery", false);
+mongoose.connect(process.env.DATABASE).then(() => {
+console.log("Du är ansluten till MongoDB");
+}).catch((error) => {
+    res.status(500).json({error: " serverfel när koppling till databasen gjordes"});
+});
 
 //Login admin
 router.post("/login", async (req, res) => {
