@@ -3,10 +3,13 @@
 const express = require("express"); //include express
 const bodyParser = require("body-parser");
 const cors = require("cors");//include cors
-const authlogRoutes = require("./routes/authlogRoutes");//include route for auth and login
 const jwt = require("jsonwebtoken");
-const foodRoutes = require("./routes/foodRoutes");
+
 require("dotenv").config();
+
+const authlogRoutes = require("./routes/authlogRoutes");//include route for auth and login
+const foodRoutes = require("./routes/foodRoutes");//include route for foods
+const drinkRoutes = require("./routes/drinkRoutes");//include route for drinks
 
 const port = process.env.PORT || 3000;
 const app = express();
@@ -17,6 +20,7 @@ app.use(cors({origin: "*"}));
 //Routes
 app.use("/api", authlogRoutes); 
 app.use("/api/foods", foodRoutes);
+app.use("/api/drink", drinkRoutes);
 
 // protected route for admin
 app.get("/api/admin", authenticateToken, (req, res) => {
