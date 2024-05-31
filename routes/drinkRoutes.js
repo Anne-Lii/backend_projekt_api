@@ -1,9 +1,13 @@
+/*Anne-Lii Hansen */
+"use strict"
 
-const express = require("express");//include express
+
+//include modules
+const express = require("express");
 const router = express.Router();
-const Drink = require("../models/drinks");
+const Drink = require("../models/drinks"); // Import Drink model
 
-//create new drink item
+// Route to create a new drink item
 router.post("/", async (req, res) => {
     try {
         const newDrink = new Drink(req.body);
@@ -15,7 +19,7 @@ router.post("/", async (req, res) => {
     }
 });
 
-//Get all drink items
+// Route to get all drink items
 router.get("/", async (req, res) => {
     try {
         const drinks = await Drink.find();
@@ -26,7 +30,7 @@ router.get("/", async (req, res) => {
     }
 });
 
-// Get a single drink item by ID
+// Route to get a single drink item by ID
 router.get("/:id", async (req, res) => {
     try {
         const drink = await Drink.findById(req.params.id);
@@ -39,7 +43,7 @@ router.get("/:id", async (req, res) => {
     }
 });
 
-// Update a drink item by ID
+// Route to update a drink item by ID
 router.put("/:id", async (req, res) => {
     try {
         const updatedDrink = await Drink.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -52,7 +56,7 @@ router.put("/:id", async (req, res) => {
     }
 });
 
-// Delete a drink item by ID
+// Route to delete a drink item by ID
 router.delete("/:id", async (req, res) => {
     try {
         const deletedDrink = await Drink.findByIdAndDelete(req.params.id);
@@ -65,4 +69,4 @@ router.delete("/:id", async (req, res) => {
     }
 });
 
-module.exports = router;
+module.exports = router; // Export router for use in other files

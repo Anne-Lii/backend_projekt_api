@@ -1,6 +1,9 @@
-const mongoose = require("mongoose");
+/*Anne-Lii Hansen */
+"use strict"
 
-// Bookings
+const mongoose = require("mongoose"); // Require Mongoose module
+
+// Define the schema for bookings
 const bookingInterface = new mongoose.Schema({
     name: {
         type: String,
@@ -33,5 +36,5 @@ const bookingInterface = new mongoose.Schema({
     }
 });
 
-const Booking = mongoose.model("Booking", bookingInterface);
-module.exports = Booking;
+const Booking = mongoose.model("Booking", bookingInterface); // Create the Booking model using the schema
+module.exports = Booking; // Export the Booking model for use in other files

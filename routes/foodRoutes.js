@@ -1,10 +1,13 @@
+/*Anne-Lii Hansen */
+"use strict"
 
-const express = require("express");//include express
+// Include modules
+const express = require("express");
 const router = express.Router();
-const Food = require("../models/food");
+const Food = require("../models/food");// Import Food model
 
 
-//create new food item
+// Route to create a new food item
 router.post("/", async (req, res) => {
     try {
         const newFood = new Food(req.body);
@@ -16,7 +19,7 @@ router.post("/", async (req, res) => {
     }
 });
 
-//Get all food items
+// Route to get all food items
 router.get("/", async (req, res) => {
     try {
         const foods = await Food.find();
@@ -27,7 +30,7 @@ router.get("/", async (req, res) => {
     }
 });
 
-// Get a single food item by ID
+// Route to get a single food item by ID
 router.get("/:id", async (req, res) => {
     try {
         const food = await Food.findById(req.params.id);
@@ -40,7 +43,7 @@ router.get("/:id", async (req, res) => {
     }
 });
 
-// Update a food item by ID
+// Route to update a food item by ID
 router.put("/:id", async (req, res) => {
     try {
         const updatedFood = await Food.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -53,7 +56,7 @@ router.put("/:id", async (req, res) => {
     }
 });
 
-// Delete a food item by ID
+// Route to delete a food item by ID
 router.delete("/:id", async (req, res) => {
     try {
         const deletedFood = await Food.findByIdAndDelete(req.params.id);
@@ -66,4 +69,4 @@ router.delete("/:id", async (req, res) => {
     }
 });
 
-module.exports = router;
+module.exports = router; // Export router for use in other files

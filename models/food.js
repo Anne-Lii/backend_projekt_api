@@ -1,7 +1,9 @@
-const mongoose = require("mongoose");
+/*Anne-Lii Hansen */
+"use strict"
 
+const mongoose = require("mongoose"); // Require Mongoose module
 
-//Food schema
+// Define the schema for food
 const foodSchema = new mongoose.Schema({
     category: {
         type: String,
@@ -25,5 +27,5 @@ const foodSchema = new mongoose.Schema({
     }
 });
 
-const food = mongoose.model("food", foodSchema)
-module.exports = food;
+const food = mongoose.model("food", foodSchema); // Create the food model using the schema
+module.exports = food; // Export the Food model for use in other files

@@ -1,13 +1,16 @@
-//Routes for auth
+/*Anne-Lii Hansen */
+"use strict"
 
-const express = require("express");//include express
+
+// Including modules
+const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
-//Connect to MongoDB
+//Connect to MongoDB database
 mongoose.set("strictQuery", false);
 mongoose.connect(process.env.DATABASE).then(() => {
 console.log("Du är ansluten till MongoDB");
@@ -15,11 +18,10 @@ console.log("Du är ansluten till MongoDB");
     console.error("Serverfel när koppling till databasen gjordes", error);
 });
 
-//User interface
+// Import User model
 const User = require("../models/user")
 
-
-//Add new user
+// Route to register a new user
 router.post("/register", async (req, res) => {
     try {
      const {username, password} = req.body;
@@ -30,8 +32,8 @@ router.post("/register", async (req, res) => {
      }
  
      //correct - save user
-     const user = new User({ username, password});
-     await user.save();
+     const user = new User({ username, password}); // Create a new instance of the User model
+     await user.save(); // Save the user to the database
      res.status(201).json({ message: " Användare skapad"});
  
     } catch (error) {
@@ -39,36 +41,33 @@ router.post("/register", async (req, res) => {
     }
 });
 
-//Login admin
+// Route to login admin
 router.post("/login", async (req, res) => {
     try {
         const { username, password } = req.body;
 
-        // Does user exist?
+        // Find user by username
         const user = await User.findOne({ username });
         if (!user) {
             return res.status(401).json({ message: "Fel användare eller lösenord" });
         }
 
         // Validate password
-        const isMatch = await bcrypt.compare(password, user.password);
+        const isMatch = await bcrypt.compare(password, user.password); // Compare passwords
         if (!isMatch) {
             return res.status(401).json({ message: "Fel användare eller lösenord" });
         } else {
 
-        // Create JWT
-        const payload = { id: user._id, username: user.username };
-        const token = jwt.sign(payload, process.env.JWT_SECRET_KEY, { expiresIn: "1h" });
+        // Create JWT token
+        const payload = { id: user._id, username: user.username }; // Define payload for JWT token
+        const token = jwt.sign(payload, process.env.JWT_SECRET_KEY, { expiresIn: "1h" }); // Generate JWT token with expiration
         res.status(200).json({ message: "Du har blivit inloggad", token });
         }
-
       
     } catch (error) {
         res.status(500).json({ error: "Serverfel" });
     }
 });
 
-
-
-module.exports = router;
+module.exports = router;// Export router for use in other files
 

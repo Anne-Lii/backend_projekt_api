@@ -1,7 +1,10 @@
-const mongoose = require("mongoose");
+/*Anne-Lii Hansen */
+"use strict"
+
+const mongoose = require("mongoose"); // Require Mongoose module
 
 
-//Drink schema
+// Define the schema for drinks
 const drinkSchema = new mongoose.Schema({
     category: {
         type: String,
@@ -25,5 +28,5 @@ const drinkSchema = new mongoose.Schema({
     }
 });
 
-const Drink = mongoose.model("drinks", drinkSchema)
-module.exports = Drink;
+const Drink = mongoose.model("drinks", drinkSchema)// Create the Drink model using the schema
+module.exports = Drink;// Export the Booking model for use in other files
