@@ -30,7 +30,7 @@ The API supports secure authentication and full CRUD functionality.
 
 ## Endpoints
 
-- `/api/bookings`: CRUD operations for bookings:
+## Bookings `/api/bookings`: CRUD operations for bookings:
 ```json
 {
     "name": "",
