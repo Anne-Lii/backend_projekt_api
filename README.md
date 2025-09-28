@@ -30,7 +30,7 @@ The API supports secure authentication and full CRUD functionality.
 
 ## Endpoints
 
-## Bookings `/api/bookings`: CRUD operations for bookings:
+###Bookings `/api/bookings`: CRUD operations for bookings:
 ```json
 {
     "name": "",
@@ -41,40 +41,49 @@ The API supports secure authentication and full CRUD functionality.
     "guests": ""
 }
 ```
-
-- `/api/drinks`: CRUD operations för dryck:
+###Drinks `/api/drinks`: CRUD operations for drinks:
+```json
 {
     "category": "",
     "drinkname": "",
     "description":"",
     "price": ""
 }
-
-- `/api/food`: CRUD operations för mat:
+```
+###Food `/api/food`: CRUD operations for food:
+```json
 {
     "category": "",
     "food": "",
     "description":"",
     "price": ""
 }
+```
 
-- `/api/auth/register`: Registrera en ny användare:
+###Authentication 
+`/api/auth/register`: Register a new user:
+```json
 {
     "username": "",
     "password": ""   
 }
+```
 
-- `/api/auth/login`: Logga in:
+- `/api/auth/login`: Log in:
+ ```json
 {
     "username": "",
     "password": ""   
-
 }
+```
 
 
 ## Installation
 
-Klona repo från Github:
-`https://github.com/Anne-Lii/backend_projekt_webbplats.git`
+Clone the repository and install dependencies:
+```json
+git clone https://github.com/Anne-Lii/backend_projekt_webbplats.git
+```
+cd backend_projekt_webbplats
 npm install
-npm run start
+npm start
