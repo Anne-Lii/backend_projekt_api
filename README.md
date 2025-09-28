@@ -1,34 +1,37 @@
-# Resturang Etoile- Projekt Backend-baserad webbutveckling
-Anne-Lii Hansen 
-Mail: anha2314@student.miun.se
+# Restaurant Etoile – Backend API
+Backend project for the course **Backend-Based Web Development** (Mid Sweden University).  
 
-Ett RESTful API för hantering av bokningar, drycker och mat för en fiktiv restaurang
+Developed by **Anne-Lii Hansen**  
 
-## Funktioner
-- Skapa, läsa, uppdatera och ta bort bokningar
-- Skapa, läsa, uppdatera och ta bort drycker
-- Skapa, läsa, uppdatera och ta bort maträtter
-- Säker autentisering för användare
+---
 
-## Teknologi
+## 🌟 About
+A RESTful API for managing bookings, drinks, and food for a fictional restaurant.  
+The API supports secure authentication and full CRUD functionality.  
 
-- Node.js
-- Express.js
-- MongoDB (Mongoose)
-- bcrypt (password hashing)
-- jsonwebtoken (authentication)
-- dotenv
+---
 
-## Installation
+## 🛠️ Tech Stack
+- **Backend:** Node.js, Express.js  
+- **Database:** MongoDB (Mongoose)  
+- **Authentication & Security:** bcrypt (password hashing), JSON Web Tokens (JWT)  
+- **Other:** dotenv  
 
-Klona repo från Github:
-`https://github.com/Anne-Lii/backend_projekt_webbplats.git`
-npm install
-npm run start
+---
+
+## 🚀 Features
+- Create, read, update, and delete **bookings**  
+- Create, read, update, and delete **drinks**  
+- Create, read, update, and delete **food items**  
+- Secure user authentication with JWT  
+
+---
+
 
 ## Endpoints
 
-- `/api/bookings`: CRUD operations för bokningar:
+- `/api/bookings`: CRUD operations for bookings:
+```json
 {
     "name": "",
     "email": "",
@@ -37,6 +40,7 @@ npm run start
     "time": "",
     "guests": ""
 }
+```
 
 - `/api/drinks`: CRUD operations för dryck:
 {
@@ -64,4 +68,13 @@ npm run start
 {
     "username": "",
     "password": ""   
+
 }
+
+
+## Installation
+
+Klona repo från Github:
+`https://github.com/Anne-Lii/backend_projekt_webbplats.git`
+npm install
+npm run start
